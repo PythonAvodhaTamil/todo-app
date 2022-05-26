@@ -1,0 +1,40 @@
+{% extends 'home.html' %}
+
+{% block form %}
+<center>
+ <form action=" "  method="post">
+    {% csrf_token %}
+    <div class="container">
+      <h2> Add Your Task</h2>
+  
+      <textarea name="text" id="" cols="60" rows="5"></textarea>
+      <!-- <input type="text" name='text'class="form-control form-control-lg" id="exampleInputPassword1" > -->
+    </div>
+    <br> <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</center>
+
+<center>
+  
+  <br><br>
+  <h2>Your Task List 👇 </h2>
+     <table class="table table-hover">
+        <thead>
+          <tr>
+            <!-- <th scope="col">Task</th> -->
+          </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+          <tr>
+            <td>{{item}}<td>
+            <td><a href="{% url 'delete' item.id %}">Delete</a></td> 
+            <!--  -->
+          </tr>
+        {% endfor items %}
+        </tbody>
+      </table>
+</center>
+    
+{% endblock form %}
